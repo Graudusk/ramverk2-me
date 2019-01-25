@@ -10,11 +10,11 @@ router.get('/kmom01', function(req, res, next) {
         },
         {
             question: "Berätta om din katalogstruktur och hur du organiserade din kod, hur tänkte du?",
-            answer: "Jag följde exemplet i guiden https://dbwebb.se/kunskap/nodejs-api-med-express. Då delade jag upp mina routes i egna filer som ligger i en katalog som heter 'routes'. Varje route-fil exporterar en router som används i min app.js."
+            answer: "Jag följde exemplet i guiden https://dbwebb.se/kunskap/nodejs-api-med-express. Då delade jag upp mina routes i egna filer som ligger i en katalog som heter 'routes'. Varje route-fil exporterar en router som används i min app.js. Jag tänkte att jag skulle ha så lite överflödig kod som möjligt, försöka ha det så enkelt som möjligt. Eftersom att det endast var två routes som skulle implementeras i appen."
         },
         {
             question: "Använde du någon form av scaffolding som ditt valda ramverk erbjuder?",
-            answer: "Jag skapade endast de filer som skapades i guiden och sedan redigerade jag dem för att de skulle passa uppgiftens krav."
+            answer: "Jag skapade endast de filer som skapades i guiden och sedan redigerade jag dem för att de skulle passa uppgiftens krav. Att använda en scaffolding-generator som 'express-generator' kändes överflödigt då min applikation är enkel och stabil, gör det den ska och behöver för tillfället inte mer funktionalitet. I ett tillfälle längre fram kan jag komma att behöva göra om den men inte i detta läge."
         },
         {
             question: "Vad är din TIL för detta kmom?",
