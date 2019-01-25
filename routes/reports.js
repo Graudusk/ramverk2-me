@@ -20,6 +20,11 @@ router.get('/kmom01', function(req, res, next) {
             question: "Vad är din TIL för detta kmom?",
             answer: "Ett enkelt sätt för att få en ny domän, webbserver och JSON-api up-and-running. Har man inte gjort sådant tidigare känns det väldigt enkelt något som borde vara komplicerat och dyrt att få hålla på med. Också att drifta en webbserver på en debianmaskin var nyttig lärdom."
         },
+        {
+            question: "Svårigheter i kursmomentet",
+            answer: "Något jag hade problem med var att följa guiden. Det var vissa ställen i guiden som jag inte upplevde att jag hade samma information framför mig som beskrevs i guiden. Detta gjorde att jag antingen fick lov att gissa mig till vad nästa steg skulle vara eller att fråga i gitter-chatten. Jag gjorde det senare ett par gånger eftersom att jag var rädd att göra fel. Mest för att vi jobbade med programvara och tjänster som annars är betaltjänster men som vi har fått tillgång till genom Universitetet. Skulle jag göra något dumt misstag så att jag måste betala eller kontakta support vore dumt och skulle jag inte ha tid med. Annars gick det bra att sätta upp webbservern och arbeta sig igenom uppgiften. Det mesta gick att gissa sig fram till ändå då jag ofta hade rätt i mina aningar. Jag behövde nog bara få mina tankar bekräftade så jag inte tänkte helt fel."
+        },
+
     ];
 
     res.json({ data: questions });
