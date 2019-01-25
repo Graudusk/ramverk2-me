@@ -1,26 +1,24 @@
 var express = require('express');
 var router = express.Router();
 
-
-
-/* GET home page. */
+/* GET reports. */
 router.get('/kmom01', function(req, res, next) {
     const questions = [
         {
             question: "Berätta utförligt om din syn på nodejs backend ramverk och berätta vilket ramverk du valde och varför.",
-            answer: "Jag valde expressjs som backend ramverk, då jag har stor tidigare erfarenhet med det ramverket och att det är det mest använda nodejs ramverket."
+            answer: "När jag läste igenom listan över backend ramverk på http://nodeframework.com/ hittade jag dels ingen jag kände igen eller uppfattade som populärare än Express. Jag är väldigt van med Express då jag har använt det tidigare i tre kurser. Plus att jag inte har stött på några problem eller brister med ramverket ännu. En stund funderade jag över ifall jag borde testa ett jag inte använt tidigare men jag satsar på att lära mig nya front-end ramverk istället."
         },
         {
             question: "Berätta om din katalogstruktur och hur du organiserade din kod, hur tänkte du?",
-            answer: "Jag skapade en katalog med routes, som liknar det som kommer från scaffoldingen med express. Varje route fil exporterar en router."
+            answer: "Jag följde exemplet i guiden https://dbwebb.se/kunskap/nodejs-api-med-express. Då delade jag upp mina routes i egna filer som ligger i en katalog som heter 'routes'. Varje route-fil exporterar en router som används i min app.js."
         },
         {
             question: "Använde du någon form av scaffolding som ditt valda ramverk erbjuder?",
-            answer: ""
+            answer: "Jag skapade endast de filer som skapades i guiden och sedan redigerade jag dem för att de skulle passa uppgiftens krav."
         },
         {
             question: "Vad är din TIL för detta kmom?",
-            answer: ""
+            answer: "Ett enkelt sätt för att få en ny domän, webbserver och JSON-api up-and-running. Har man inte gjort sådant tidigare känns det väldigt enkelt något som borde vara komplicerat och dyrt att få hålla på med. Också att drifta en webbserver på en debianmaskin var nyttig lärdom."
         },
     ];
 
