@@ -1,8 +1,45 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const reports = require('../models/reports');
+const router = express.Router();
+const jwt = require('jsonwebtoken');
+
+function checkToken(req, res, next) {
+    const token = req.headers['x-access-token'];
+
+    jwt.verify(token, process.env.JWT_SECRET, function(err, decoded) {
+        if (err) {
+            return res.status(500).json({
+                errors: {
+                    status: 500,
+                    source: "/reports",
+                    title: "Database error",
+                    detail: err.message
+                }
+            });
+        }
+
+        // Valid token send on the request
+        next();
+    });
+}
+
+router.post("/",
+    (req, res, next) => checkToken(req, res, next),
+    (req, res) => reports.addReport(res, req.body));
+
+
+
+router.get('/:report', (req, res) => reports.getReport(res, req.params.report));
+/* GET reports. */
+// router.get('/:report', function(req, res, next) {
+
+//     const report = reports.getReport(res, req.params.report);
+
+//     res.json({ data: report });
+// });
 
 /* GET reports. */
-router.get('/kmom01', function(req, res, next) {
+/*router.get('/kmom01', function(req, res, next) {
     const questions = [
         {
             question: "Berätta utförligt om din syn på nodejs backend ramverk och berätta vilket ramverk du valde och varför.",
@@ -28,6 +65,6 @@ router.get('/kmom01', function(req, res, next) {
     ];
 
     res.json({ data: questions });
-});
+});*/
 
 module.exports = router;

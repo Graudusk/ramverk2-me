@@ -1,5 +1,12 @@
+DROP TABLE IF EXISTS users;
 CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(255) NOT NULL,
     password VARCHAR(60) NOT NULL,
     UNIQUE(email)
+);
+DROP TABLE IF EXISTS reports;
+CREATE TABLE IF NOT EXISTS reports (
+    title VARCHAR(255) NOT NULL,
+    data TEXT NOT NULL,
+    UNIQUE(title)
 );
