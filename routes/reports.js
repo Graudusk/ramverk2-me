@@ -41,6 +41,28 @@ router.get('/:report', (req, res) => reports.getReport(res, req.params.report));
 /* GET reports. */
 /*router.get('/kmom01', function(req, res, next) {
     const questions = [
+    {
+        question: "Vilket JavaScript-ramverk valde du och varför?",
+        answer: "Jag valde att använda mig av Vue.js som ramverk. Jag har testat den förut och när vi gick igenom alla ravmerk i uppgiften https://dbwebb.se/kunskap/frontend-ramverk var den ingen annan som verkade lika lockande som Vue. När jag har kollat igenom JavaScript-ramverk vid tidigare tillfällen kändes React och Angular av någon anledning inte lockande och Vue kändes bättre på grund av tydlig dokumentation och att det verkade lätt att börja arbeta med det."
+    },
+    {
+        question: "Hur gick det att sedan implementera din me-sida i ramverket?",
+        answer: "Det gick väldigt enkelt. Jag utgick från scaffoldingen jag fick via cli-vue kommandot: vue create och anpassade det till uppgiften. Applikationen var också väldigt enkel så det var inte mycket som behövde anpassas. Routern behövde jag knappt ändra på men komponenterna för me-sidan och redovisningstexterna hade jag ingen aning om hur jag skulle anpassa till uppgiften. Jag kollade på koden för me-sidan med vue: https://github.com/emilfolino/me-vue/ och granskade upplägget som används där. Min katalogstruktur som scaffoldades fram ser lite annorlunda ut än repot men att implementera koden från repots komponenter gick smärtfritt och jag behövde bara ändra adressen för fetch:en för att det skulle fungera för mig och jag såg ingen anledning till att ändra för mycket i den koden."
+    },
+    {
+        question: "Vilka fördelar ser du med ett JavaScript ramverk jämfört med vanilla JavaScript?",
+        answer: "Alla färdiga moduler och bibliotek som kommer med ramverken samt det smidiga sättet att sätta upp en fungerande sida på några sekunder är några fördelar jag kommer på direkt. Sedan finns det många funktioner i just Vue.js som ifall man hade gjort dem själv från grunden skulle komplicera applikationens kod och ta väldigt lång tid skulle jag gissa. Det är mycket jag inte behöver tänka på med ett ramverk och jag har tid över att lägga krut på annat på applikationen när ramverket löser routing, fetching, inläsning av data till element o.s.v."
+    },
+    {
+        question: "Vilka lärdomar gjorde du dig när du implementerade autentisering med JWT på servern?",
+        answer: "Det gick bra att implementera JWT på servern och jag stötte inte på några stora fallgropar. Jag följde guiden till punkt och pricka och det fungerade förutom att jag hade problem med att installera bcrypt till en början. Eftersom att jag inte hade python installerat fick jag märkliga felmeddelanden när jag körde npm install bcrypt. Men efter att jag installerade python och uppdaterade npm fungerade det. Så jag lärde mig att det är väldigt viktigt att alltid kolla dependencies för program man installerar. Även om det är program som man förväntar sig ska installera dependencies åt en. Och det är en annan lärdom, förvänta dig inte att npm eller någonting liknande ska ta hand om allting åt dig."
+    },
+    {
+        question: "Vad är din TIL för detta kmom?",
+        answer: "Vue är ett intressant ramverk och jag ser fram emot att lära mig mer om det. Fastän jag endast har fått en snabb insyn i arbetssättet känns det bra och jag är självsäker i att det kommer att gå bra."
+    },
+]
+    const questions = [
         {
             question: "Berätta utförligt om din syn på nodejs backend ramverk och berätta vilket ramverk du valde och varför.",
             answer: "När jag läste igenom listan över backend ramverk på http://nodeframework.com/ hittade jag dels ingen jag kände igen eller uppfattade som populärare än Express. Jag är väldigt van med Express då jag har använt det tidigare i tre kurser. Plus att jag inte har stött på några problem eller brister med ramverket ännu. En stund funderade jag över ifall jag borde testa ett jag inte använt tidigare men jag satsar på att lära mig nya front-end ramverk istället."
