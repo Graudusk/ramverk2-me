@@ -4,6 +4,7 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./db/texts.sqlite');
 const bodyParser = require("body-parser");
 const bcrypt = require('bcryptjs');
+const reports = require('../models/reports');
 const saltRounds = 10;
 
 router.use(bodyParser.json()); // for parsing application/json
@@ -19,14 +20,16 @@ router.post("/", (req, res) => {
             hash,
             (err) => {
                 if (err) {
-                    return res.status(500).json({
-                        errors: {
-                            status: 500,
-                            source: "/register",
-                            title: "Database error",
-                            detail: err.message
-                        }
-                    });
+                    return reports.returnError(res, err, "/register", "Database error");
+
+                    // return res.status(500).json({
+                    //     errors: {
+                    //         status: 500,
+                    //         source: "/register",
+                    //         title: "Database error",
+                    //         detail: err.message
+                    //     }
+                    // });
                 }
 
                 var message = {

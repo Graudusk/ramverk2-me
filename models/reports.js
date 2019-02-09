@@ -1,6 +1,17 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./db/texts.sqlite');
 
+function returnError(res, err, source, title) {
+    return res.status(500).json({
+        errors: {
+            status: 500,
+            source: source,
+            title: title,
+            detail: err.message
+        }
+    });
+}
+
 function getReport(res, reportTitle) {
     db.get("SELECT * FROM reports WHERE title = ?",
         reportTitle,
@@ -42,6 +53,7 @@ function addReport(res, body) {
 }
 
 module.exports = {
+    returnError: returnError,
     addReport: addReport,
     getReport: getReport
 };
