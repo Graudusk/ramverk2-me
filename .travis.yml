@@ -13,6 +13,7 @@ git:
 
 before_script:
     - npm install
+    - codacy-coverage -e 028038c9085bc637b8ae4631096d8abea34256d88cae504cf615b447cfa50728:16006
 
 script:
     - npm test
