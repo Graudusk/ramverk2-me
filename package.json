@@ -18,7 +18,7 @@
     "test3": "docker-compose run node_8_alpine npm test",
     "test4": "docker-compose run node_6_alpine npm test",
     "report-coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "report-codecov": "nyc report --reporter=lcov > coverage.lcov && codecov | codacy-coverage"
+    "report-codecov": "nyc report --reporter=lcov > coverage.lcov && codecov"
   },
   "author": "Eric Johansson",
   "license": "ISC",
