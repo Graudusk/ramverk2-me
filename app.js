@@ -7,18 +7,14 @@ const reports = require('./routes/reports');
 const register = require('./routes/register');
 const login = require('./routes/login');
 const port = 1337;
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./db/texts.sqlite');
 const bodyParser = require("body-parser");
 
 app.use(cors());
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// don't show the log when it is test
 if (process.env.NODE_ENV !== 'test') {
-    // use morgan to log at command line
-    app.use(morgan('combined')); // 'combined' outputs the Apache style LOGs
+    app.use(morgan('combined'));
 }
 
 app.use((req, res, next) => {
@@ -46,6 +42,7 @@ app.use('/login', login);
 // });
 app.use((req, res, next) => {
     var err = new Error("Not Found");
+
     err.status = 404;
     next(err);
 });

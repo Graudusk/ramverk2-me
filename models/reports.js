@@ -2,7 +2,6 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./db/texts.sqlite');
 
 module.exports = (function () {
-
     function getReport(res, reportTitle) {
         db.get("SELECT * FROM reports WHERE title = ?",
             reportTitle,
@@ -22,8 +21,7 @@ module.exports = (function () {
                     // res.json( { data: row } );
                     res.json( JSON.parse(row.data) );
                 }
-
-        });
+            });
     }
 
     function addReport(res, body) {

@@ -11,6 +11,7 @@ router.use(bodyParser.urlencoded({ extended: true })); // for parsing applicatio
 
 router.post("/", (req, res) => {
     const body = req.body;
+
     bcrypt.hash(body.password, saltRounds, function(err, hash) {
         // spara lösenord i databasen.
         db.run("INSERT INTO users (email, password) VALUES (?, ?)",

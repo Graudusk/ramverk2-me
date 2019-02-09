@@ -6,7 +6,7 @@
 /* global describe it */
 
 var assert = require("assert");
-const report = require("../../models/reports");
+// const report = require("../../models/reports");
 
 describe("Dummy test", function() {
     it("dummy", function() {
