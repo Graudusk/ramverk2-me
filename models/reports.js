@@ -26,7 +26,7 @@ function getReport(res, reportTitle) {
                     }
                 });
             } else {
-                res.json( JSON.parse(row.data) );
+                return res.json( JSON.parse(row.data) );
             }
         });
 }
