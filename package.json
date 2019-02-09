@@ -2,20 +2,33 @@
   "name": "me-api",
   "version": "1.0.2",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "production": "NODE_ENV='production' node app.js"
+    "test": "nyc --reporter=html --reporter=text mocha test/**/*.js",
+    "posttest": "npm run eslint",
+    "eslint": "eslint .",
+    "production": "NODE_ENV='production' node app.js",
+    "docker-latest": "docker-compose run node_alpine npm test",
+    "docker-10": "docker-compose run node_10_alpine npm test",
+    "docker-8": "docker-compose run node_8_alpine npm test",
+    "docker-6": "docker-compose run node_6_alpine npm test"
   },
   "author": "Eric Johansson",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.3",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
     "morgan": "^1.9.1",
     "sqlite3": "^4.0.6"
+  },
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "eslint-plugin-react": "^7.12.4",
+    "javascript-style-guide": "^0.9.10",
+    "mocha": "^5.2.0",
+    "nyc": "^13.2.0"
   }
 }
