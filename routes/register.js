@@ -21,15 +21,6 @@ router.post("/", (req, res) => {
             (err) => {
                 if (err) {
                     return reports.returnError(res, err, "/register", "Database error");
-
-                    // return res.status(500).json({
-                    //     errors: {
-                    //         status: 500,
-                    //         source: "/register",
-                    //         title: "Database error",
-                    //         detail: err.message
-                    //     }
-                    // });
                 }
 
                 var message = {

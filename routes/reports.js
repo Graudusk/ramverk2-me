@@ -9,18 +9,8 @@ function checkToken(req, res, next) {
     jwt.verify(token, process.env.JWT_SECRET, function(err/*, decoded*/) {
         if (err) {
             return reports.returnError(res, err, "/reports", "Database error");
-            
-            // return res.status(500).json({
-            //     errors: {
-            //         status: 500,
-            //         source: "/reports",
-            //         title: "Database error",
-            //         detail: err.message
-            //     }
-            // });
         }
 
-        // Valid token send on the request
         next();
     });
 }
