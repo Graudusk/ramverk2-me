@@ -12,7 +12,9 @@
     "docker-latest": "docker-compose run node_alpine npm test",
     "docker-10": "docker-compose run node_10_alpine npm test",
     "docker-8": "docker-compose run node_8_alpine npm test",
-    "docker-6": "docker-compose run node_6_alpine npm test"
+    "docker-6": "docker-compose run node_6_alpine npm test",
+    "report-coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "report-codecov": "nyc report --reporter=lcov > coverage.lcov && codecov"
   },
   "author": "Eric Johansson",
   "license": "ISC",
@@ -25,6 +27,8 @@
     "sqlite3": "^4.0.6"
   },
   "devDependencies": {
+    "codecov": "^3.1.0",
+    "coveralls": "^3.0.2",
     "eslint": "^5.13.0",
     "eslint-plugin-react": "^7.12.4",
     "javascript-style-guide": "^0.9.10",
