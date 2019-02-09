@@ -1,7 +1,11 @@
 {
   "name": "me-api",
-  "version": "1.0.2",
+  "version": "3.0.0",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/graudusk/ramverk2-me.git"
+  },
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
