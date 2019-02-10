@@ -6,19 +6,26 @@ const bodyParser = require("body-parser");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const reports = require('../models/reports');
+const cors = require('cors');
 
 router.use(bodyParser.json()); // for parsing application/json
 router.use(bodyParser.urlencoded({ extended: true })); // for parsing application/
 
+router.use(cors());
+
 router.post("/", (req, res) => {
     const body = req.body;
     // spara lösenord i databasen.
+    console.log(body);
+    if (body !== null && body.email === null) {
+        body = JSON.parse(body);
+    }
 
     db.get("SELECT * FROM users WHERE email = ?",
         body.email,
         (err, row) => {
             if (err) {
-                return reports.returnError(res, err, "/register", "Database error");
+                return reports.returnError(res, err, "/login", "Database error");
             }
 
             bcrypt.compare(body.password, row.password, function(e, result) {
@@ -26,7 +33,7 @@ router.post("/", (req, res) => {
                     const payload = { email: row.email };
                     const secret = process.env.JWT_SECRET;
 
-                    console.log(secret);
+                    // console.log(secret);
                     const jwtToken = jwt.sign(payload, secret, { expiresIn: '24h' });
                     // const token = jwt.sign(payload, secret, { expiresIn: '1h'});
 

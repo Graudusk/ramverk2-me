@@ -4,11 +4,14 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./db/texts.sqlite');
 const bodyParser = require("body-parser");
 const bcrypt = require('bcryptjs');
+const cors = require('cors');
 const reports = require('../models/reports');
 const saltRounds = 10;
 
 router.use(bodyParser.json()); // for parsing application/json
 router.use(bodyParser.urlencoded({ extended: true })); // for parsing application/
+
+router.use(cors());
 
 router.post("/", (req, res) => {
     const body = req.body;

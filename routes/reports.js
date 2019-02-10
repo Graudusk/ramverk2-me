@@ -19,8 +19,6 @@ router.post("/",
     (req, res, next) => checkToken(req, res, next),
     (req, res) => reports.addReport(res, req.body));
 
-
-
 router.get('/:report', (req, res) => reports.getReport(res, req.params.report));
 
 
