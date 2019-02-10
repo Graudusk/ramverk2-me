@@ -14,9 +14,8 @@ router.use(bodyParser.urlencoded({ extended: true })); // for parsing applicatio
 router.use(cors());
 
 router.post("/", (req, res) => {
-    const body = req.body;
-    // spara lösenord i databasen.
-    console.log(body);
+    let body = req.body;
+
     if (body !== null && body.email === null) {
         body = JSON.parse(body);
     }
