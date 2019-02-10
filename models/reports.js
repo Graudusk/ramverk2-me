@@ -26,7 +26,10 @@ function getReport(res, reportTitle) {
                     }
                 });
             } else {
-                return res.json( JSON.parse(row.data) );
+                // let textData = row.data.replace(/\\n/g, "</br>");/*replace("\\n", "")*/
+
+                // console.log(textData);
+                return res.json(JSON.parse(row.data));
             }
         });
 }
