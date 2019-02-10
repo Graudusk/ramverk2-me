@@ -1,10 +1,10 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./db/texts.sqlite');
 
-function returnError(res, err, source, title) {
-    return res.status(500).json({
+function returnError(res, err, source, title, status = 500) {
+    return res.status(status).json({
         errors: {
-            status: 500,
+            status: status,
             source: source,
             title: title,
             detail: err.message

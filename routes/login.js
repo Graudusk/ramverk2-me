@@ -27,34 +27,38 @@ router.post("/", (req, res) => {
                 return reports.returnError(res, err, "/login", "Database error");
             }
 
-            bcrypt.compare(body.password, row.password, function(e, result) {
-                if (result) {
-                    const payload = { email: row.email };
-                    const secret = process.env.JWT_SECRET;
+            if (row && row.password) {
+                bcrypt.compare(body.password, row.password, function(e, result) {
+                    if (result) {
+                        const payload = { email: row.email };
+                        const secret = process.env.JWT_SECRET;
 
-                    // console.log(secret);
-                    const jwtToken = jwt.sign(payload, secret, { expiresIn: '24h' });
-                    // const token = jwt.sign(payload, secret, { expiresIn: '1h'});
+                        // console.log(secret);
+                        const jwtToken = jwt.sign(payload, secret, { expiresIn: '24h' });
+                        // const token = jwt.sign(payload, secret, { expiresIn: '1h'});
 
-                    return res.json({
-                        data: {
-                            type: "success",
-                            message: "User logged in",
-                            user: payload,
-                            token: jwtToken
-                        }
-                    });
-                } else {
-                    return res.status(401).json({
-                        errors: {
-                            status: 401,
-                            source: "/login",
-                            title: "Wrong password",
-                            detail: "Password is incorrect."
-                        }
-                    });
-                }
-            });
+                        return res.status(200).json({
+                            data: {
+                                type: "success",
+                                message: "User logged in",
+                                user: payload,
+                                token: jwtToken
+                            }
+                        });
+                    } else {
+                        return res.status(401).json({
+                            errors: {
+                                status: 401,
+                                source: "/login",
+                                title: "Wrong password",
+                                detail: "Password is incorrect."
+                            }
+                        });
+                    }
+                });
+            } else {
+                return reports.returnError(res, {message: "Wrong username or password"}, "/login", "Database error", 401);
+            }
         }
     );
     // res.status(500).json({ data: "No user with those credentials exist." });
