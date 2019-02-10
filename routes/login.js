@@ -57,7 +57,13 @@ router.post("/", (req, res) => {
                     }
                 });
             } else {
-                return reports.returnError(res, {message: "Wrong username or password"}, "/login", "Database error", 401);
+                return reports.returnError(
+                    res,
+                    {
+                        message: "Wrong username or password"
+                    },
+                    "/login", "Database error",
+                    401);
             }
         }
     );
