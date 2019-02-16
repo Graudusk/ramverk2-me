@@ -2,33 +2,15 @@
 process.env.NODE_ENV = 'test';
 process.env.JWT_SECRET = 'test';
 
-/* global describe it before */
+/* global describe it */
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../../app.js');
-// const assert = require("assert");
-
-const db = require("../../db/database.js");
-
-let jwtoken = '';
 
 chai.should();
-
 chai.use(chaiHttp);
 
 describe('Reports', () => {
-    before(() => {
-        db.run("DELETE FROM users", (err) => {
-            if (err) {
-                console.error("Could not empty test DB users", err.message);
-            }
-        });
-        db.run("INSERT INTO users (email, password) VALUES ('tester@test.com', 'test')", (err) => {
-            if (err) {
-                console.error("Could not insert into DB users", err.message);
-            }
-        });
-    });
     describe('GET /reports/kmom01', () => {
         it('200 HAPPY PATH', (done) => {
             chai.request(server)
@@ -133,31 +115,10 @@ describe('Login', () => {
                     'password': '0'
                 })
                 .end((err, res) => {
+                    // jwtoken = res.body.data.token;
                     res.should.have.status(401);
                     res.body.should.be.an("object");
                     // res.body.data.should.be.an("object");
-                    // res.body.data.length.should.be.above(0);
-
-                    done();
-                });
-        });
-    });
-
-    describe('POST /login', () => {
-        it('200 HAPPY PATH', (done) => {
-            chai.request(server)
-                .post("/login")
-                .type('form')
-                .send({
-                    '_method': 'post',
-                    'email': 'tester@test.com',
-                    'password': 'test'
-                })
-                .end((err, res) => {
-                    jwtoken = res.body.data.token;
-                    res.should.have.status(200);
-                    res.body.should.be.an("object");
-                    res.body.data.should.be.an("object");
                     // res.body.data.length.should.be.above(0);
 
                     done();
@@ -168,69 +129,12 @@ describe('Login', () => {
 
 
 describe('Reports', () => {
-    before(() => {
-        db.run("INSERT INTO users (email, password) VALUES ('tester@test.com', 'test')", (err) => {
-            if (err) {
-                console.error("Could not insert into DB users", err.message);
-            }
-        });
-        db.run("DELETE FROM reports where title = 'testtitle'", (err) => {
-            if (err) {
-                console.error("Could not empty test DB users", err.message);
-            }
-        });
-    });
-
     describe('POST /reports/', () => {
         it('403 NOT AUTHORIZED', (done) => {
             chai.request(server)
                 .post("/reports/")
                 .end((err, res) => {
                     res.should.have.status(403);
-                    // res.body.should.be.an("object");
-                    // res.body.data.should.be.an("array");
-                    // res.body.data.length.should.be.above(0);
-
-                    done();
-                });
-        });
-    });
-
-    describe('POST /reports/', () => {
-        it('500 REPORT ADDED', (done) => {
-            chai.request(server)
-                .post("/reports/")
-                .type('form')
-                .set('x-access-token', jwtoken)
-                .send({
-                    '_method': 'post',
-                    // 'title': 'testtitle',
-                    'data': 'test'
-                })
-                .end((err, res) => {
-                    res.should.have.status(500);
-                    // res.body.should.be.an("object");
-                    // res.body.data.should.be.an("array");
-                    // res.body.data.length.should.be.above(0);
-
-                    done();
-                });
-        });
-    });
-
-    describe('POST /reports/', () => {
-        it('201 REPORT ADDED', (done) => {
-            chai.request(server)
-                .post("/reports/")
-                .type('form')
-                .set('x-access-token', jwtoken)
-                .send({
-                    '_method': 'post',
-                    'title': 'testtitle',
-                    'data': 'test'
-                })
-                .end((err, res) => {
-                    res.should.have.status(201);
                     // res.body.should.be.an("object");
                     // res.body.data.should.be.an("array");
                     // res.body.data.length.should.be.above(0);

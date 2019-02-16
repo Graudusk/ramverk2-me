@@ -9,6 +9,7 @@ const server = require('../../app.js');
 
 const db = require("../../db/database.js");
 
+let jwtoken = '';
 
 chai.should();
 
@@ -21,10 +22,32 @@ describe('Login', () => {
                 console.error("Could not empty test DB users", err.message);
             }
         });
-        db.run("INSERT INTO users (email, password) VALUES ('tester@test.com', 'test')", (err) => {
+        db.run("DELETE FROM reports WHERE title = 'title'", (err) => {
             if (err) {
-                console.error("Could not insert into DB users", err.message);
+                console.error("Could not empty reports", err.message);
             }
+        });
+    });
+
+    describe('POST /register', () => {
+        it('201 USER REGISTERED', (done) => {
+            chai.request(server)
+                .post("/register")
+                .type('form')
+                .send({
+                    '_method': 'post',
+                    'email': 'tester@test.com',
+                    'password': 'test'
+                })
+                .end((err, res) => {
+                    // console.log(res);
+                    res.should.have.status(201);
+                    // res.body.should.be.an("object");
+                    // res.body.data.should.be.an("array");
+                    // res.body.data.length.should.be.above(0);
+
+                    done();
+                });
         });
     });
 
@@ -92,7 +115,7 @@ describe('Login', () => {
     });
 
     describe('POST /login', () => {
-        it('200 HAPPY PATH', (done) => {
+        it('200 HAPPY LOGIN', (done) => {
             chai.request(server)
                 .post("/login")
                 .type('form')
@@ -102,9 +125,32 @@ describe('Login', () => {
                     'password': 'test'
                 })
                 .end((err, res) => {
+                    jwtoken = res.body.data.token;
                     res.should.have.status(200);
                     res.body.should.be.an("object");
                     res.body.data.should.be.an("object");
+                    // res.body.data.length.should.be.above(0);
+
+                    done();
+                });
+        });
+    });
+
+    describe('POST /reports/', () => {
+        it('201 REPORT ADDED', (done) => {
+            chai.request(server)
+                .post("/reports/")
+                .type('form')
+                .set('x-access-token', jwtoken)
+                .send({
+                    '_method': 'post',
+                    'title': 'title',
+                    'data': 'test'
+                })
+                .end((err, res) => {
+                    res.should.have.status(201);
+                    // res.body.should.be.an("object");
+                    // res.body.data.should.be.an("array");
                     // res.body.data.length.should.be.above(0);
 
                     done();

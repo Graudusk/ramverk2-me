@@ -15,13 +15,13 @@ chai.should();
 chai.use(chaiHttp);
 
 describe('Register', () => {
-    // before(() => {
-    //     db.run("DELETE FROM users", (err) => {
-    //         if (err) {
-    //             console.error("Could not empty test DB users", err.message);
-    //         }
-    //     });
-    // });
+    before(() => {
+        db.run("DELETE FROM users", (err) => {
+            if (err) {
+                console.error("Could not empty test DB users", err.message);
+            }
+        });
+    });
 
     describe('POST /register', () => {
         it('500 NULL VALUE EXCEPTION', (done) => {
@@ -52,7 +52,7 @@ describe('Register', () => {
                 .type('form')
                 .send({
                     '_method': 'post',
-                    'email': 'tester1@test.com',
+                    'email': 'tester@test.com',
                     'password': 'test'
                 })
                 .end((err, res) => {
@@ -75,7 +75,7 @@ describe('Register', () => {
                 .type('form')
                 .send({
                     '_method': 'post',
-                    'email': 'tester1@test.com',
+                    'email': 'tester@test.com',
                     'password': 'test'
                 })
                 .end((err, res) => {
