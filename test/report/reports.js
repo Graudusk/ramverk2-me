@@ -47,21 +47,6 @@ describe('Reports', () => {
         });
     });
 
-    describe('GET /reports/kmom03', () => {
-        it('200 HAPPY PATH', (done) => {
-            chai.request(server)
-                .get("/reports/kmom03")
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.an("object");
-                    res.body.data.should.be.an("array");
-                    res.body.data.length.should.be.above(0);
-
-                    done();
-                });
-        });
-    });
-
     describe('GET 404', () => {
         it('404 SAD PATH', (done) => {
             chai.request(server)

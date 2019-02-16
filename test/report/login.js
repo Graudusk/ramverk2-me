@@ -14,7 +14,7 @@ chai.should();
 
 chai.use(chaiHttp);
 
-describe('Register', () => {
+describe('Login', () => {
     before(() => {
         db.run("DELETE FROM users", (err) => {
             if (err) {
@@ -27,12 +27,7 @@ describe('Register', () => {
             }
         });
     });
-});
 
-
-
-
-describe('Login', () => {
     describe('POST /login', () => {
         it('401 WRONG PASSWORD', (done) => {
             chai.request(server)

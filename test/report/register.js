@@ -52,7 +52,7 @@ describe('Register', () => {
                 .type('form')
                 .send({
                     '_method': 'post',
-                    'email': 'tester@test.com',
+                    'email': 'tester1@test.com',
                     'password': 'test'
                 })
                 .end((err, res) => {
@@ -75,7 +75,7 @@ describe('Register', () => {
                 .type('form')
                 .send({
                     '_method': 'post',
-                    'email': 'tester@test.com',
+                    'email': 'tester1@test.com',
                     'password': 'test'
                 })
                 .end((err, res) => {
