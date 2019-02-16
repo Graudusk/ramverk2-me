@@ -21,7 +21,7 @@ describe('Login', () => {
                 console.error("Could not empty test DB users", err.message);
             }
         });
-        db.run("INSERT INTO users (email, password) VALUES (tester@test.com, test)", (err) => {
+        db.run("INSERT INTO users (email, password) VALUES ('tester@test.com', 'test')", (err) => {
             if (err) {
                 console.error("Could not insert into DB users", err.message);
             }
