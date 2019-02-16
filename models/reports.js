@@ -1,5 +1,6 @@
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./db/texts.sqlite');
+// const sqlite3 = require('sqlite3').verbose();
+// const db = new sqlite3.Database('./db/texts.sqlite');
+const db = require('../db/database');
 
 function returnError(res, err, source, title, status = 500) {
     return res.status(status).json({
@@ -26,10 +27,21 @@ function getReport(res, reportTitle) {
                     }
                 });
             } else {
+                if (row) {
+                    return res.json(JSON.parse(row.data));
+                } else {
+                    return res.status(500).json({
+                        errors: {
+                            status: 500,
+                            source: "/report",
+                            title: "Database error",
+                            detail: "Report not found"
+                        }
+                    });
+                }
                 // let textData = row.data.replace(/\\n/g, "</br>");/*replace("\\n", "")*/
 
                 // console.log(textData);
-                return res.json(JSON.parse(row.data));
             }
         });
 }

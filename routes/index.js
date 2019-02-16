@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) { // eslint-disable-line no-unused-vars
         description: "Hej! Jag heter Eric Johansson och studerar på Blekinge tekniska Högskola. Mina hobbies är att spela gitarr, göra spel, resa, laga mat och reparera kod.", // eslint-disable-line max-len
     };
 
-    res.json(data);
+    return res.json(data);
 });
 
 module.exports = router;

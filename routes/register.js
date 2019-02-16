@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./db/texts.sqlite');
+// const sqlite3 = require('sqlite3').verbose();
+const db = require('../db/database');
+// const db = new sqlite3.Database('./db/texts.sqlite');
 const bodyParser = require("body-parser");
 const bcrypt = require('bcryptjs');
 const cors = require('cors');

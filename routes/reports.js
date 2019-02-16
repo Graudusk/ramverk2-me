@@ -8,7 +8,7 @@ function checkToken(req, res, next) {
 
     jwt.verify(token, process.env.JWT_SECRET, function(err/*, decoded*/) {
         if (err) {
-            return reports.returnError(res, err, "/reports", "Database error");
+            return reports.returnError(res, err, "/reports", "Database error", 403);
         }
 
         next();
