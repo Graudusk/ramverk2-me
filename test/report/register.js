@@ -16,11 +16,6 @@ chai.use(chaiHttp);
 
 describe('Register', () => {
     before(() => {
-        db.run("CREATE TABLE IF NOT EXISTS users", (err) => {
-            if (err) {
-                console.error("Could not create table DB users", err.message);
-            }
-        });
         db.run("DELETE FROM users", (err) => {
             if (err) {
                 console.error("Could not empty test DB users", err.message);
