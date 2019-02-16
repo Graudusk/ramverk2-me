@@ -17,19 +17,6 @@ chai.should();
 chai.use(chaiHttp);
 
 describe('Reports', () => {
-    before(() => {
-        db.run("INSERT INTO reports (title, data) VALUES('kmom01','test')", (err) => {
-            if (err) {
-                console.error("Could not insert into DB users", err.message);
-            }
-        });
-        db.run("INSERT INTO reports (title, data) VALUES('kmom02','test')", (err) => {
-            if (err) {
-                console.error("Could not insert into DB users", err.message);
-            }
-        });
-    });
-
     describe('GET /reports/kmom01', () => {
         it('200 HAPPY PATH', (done) => {
             chai.request(server)
