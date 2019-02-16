@@ -8,11 +8,22 @@ node_js:
 
 sudo: false
 
+env:
+    - JWT_SECRET="sOINnmjDDDxPPMkboC6YBU7etSTGUgYBOQMPS46R8cHNOuWrFfDGZsTtXhkdiNLU"
+
+
 git:
     submodules: false
 
 before_script:
     - npm install
+
+
+services:
+    - sqlite3
+
+before_install:
+    - sqlite3 db/test.sqlite < db/migrate.sql
 
 script:
     - npm test
