@@ -185,7 +185,7 @@ describe('Login', () => {
 
 describe('Reports', () => {
     before(() => {
-        db.run("INSERT INTO users (email, password) VALUES ('test', 'test')", (err) => {
+        db.run("INSERT INTO users (email, password) VALUES ('tester@test.com', 'test')", (err) => {
             if (err) {
                 console.error("Could not insert into DB users", err.message);
             }
