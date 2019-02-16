@@ -17,6 +17,18 @@ chai.should();
 chai.use(chaiHttp);
 
 describe('Reports', () => {
+    before(() => {
+        db.run("DELETE FROM users", (err) => {
+            if (err) {
+                console.error("Could not empty test DB users", err.message);
+            }
+        });
+        db.run("INSERT INTO users (email, password) VALUES ('tester@test.com', 'test')", (err) => {
+            if (err) {
+                console.error("Could not insert into DB users", err.message);
+            }
+        });
+    });
     describe('GET /reports/kmom01', () => {
         it('200 HAPPY PATH', (done) => {
             chai.request(server)
