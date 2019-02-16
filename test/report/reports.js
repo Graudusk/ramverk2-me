@@ -18,22 +18,12 @@ chai.use(chaiHttp);
 
 describe('Reports', () => {
     before(() => {
-        db.run("CREATE TABLE IF NOT EXISTS reports", (err) => {
-            if (err) {
-                console.error("Could not create table DB users", err.message);
-            }
-        });
-        db.run("INSERT INTO users (email, password) VALUES (`test`,`test`)", (err) => {
+        db.run("INSERT INTO reports (title, data) VALUES('kmom01','test')", (err) => {
             if (err) {
                 console.error("Could not insert into DB users", err.message);
             }
         });
-        db.run("INSERT INTO reports (title, data) VALUES (`kmom01`,`test`)", (err) => {
-            if (err) {
-                console.error("Could not insert into DB users", err.message);
-            }
-        });
-        db.run("INSERT INTO reports (title, data) VALUES (`kmom02`,`test`)", (err) => {
+        db.run("INSERT INTO reports (title, data) VALUES('kmom02','test')", (err) => {
             if (err) {
                 console.error("Could not insert into DB users", err.message);
             }
