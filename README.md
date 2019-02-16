@@ -6,3 +6,6 @@ Ramverk2-me
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/3ac8db26155f5f735097/maintainability)](https://codeclimate.com/github/Graudusk/ramverk2-me/maintainability)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/97954d92f4bd443d9eac17f357bd1c37)](https://www.codacy.com/app/Graudusk/ramverk2-me?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Graudusk/ramverk2-me&amp;utm_campaign=Badge_Grade)
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Graudusk/ramverk2-me/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Graudusk/ramverk2-me/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/Graudusk/ramverk2-me/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Graudusk/ramverk2-me/?branch=master)
