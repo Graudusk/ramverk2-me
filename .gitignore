@@ -7,7 +7,7 @@ yarn-error.log*
 
 # Custom
 .reportpost.js
-*.sqlite
+texts.sqlite
 
 # Runtime data
 pids
