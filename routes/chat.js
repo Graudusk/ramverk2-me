@@ -15,7 +15,7 @@ const router = express.Router();
 
 
 // Return a JSON object with list of all documents within the collection.
-app.get("/", async (request, response) => {
+router.get("/", async (request, response) => {
     try {
         let res = await findInCollection(dsn, "chat", {}, {}, 0);
 
@@ -30,10 +30,10 @@ app.get("/", async (request, response) => {
 
 
 // Startup server and liten on port
-app.listen(port, () => {
-    console.log(`Server is listening on ${port}`);
-    console.log(`DSN is: ${dsn}`);
-});
+// router.listen(port, () => {
+//     console.log(`Server is listening on ${port}`);
+//     console.log(`DSN is: ${dsn}`);
+// });
 
 
 
