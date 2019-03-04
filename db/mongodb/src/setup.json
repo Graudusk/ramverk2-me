@@ -1,0 +1,9 @@
+[
+    {
+        "timestamp": 1551729373,
+        "message": "test",
+        "user": {
+            "nickname": "test"
+        }
+    }
+]
