@@ -78,6 +78,7 @@ async function findInCollection(dsn, colName, criteria, projection, limit) {
 
 
 async function insertIntoCollection(dsn, colName, data) {
+    console.log(data);
     const client  = await mongo.connect(dsn);
     const db = await client.db();
     const col = await db.collection(colName);
