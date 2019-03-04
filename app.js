@@ -6,7 +6,9 @@ const index = require('./routes/index');
 const reports = require('./routes/reports');
 const register = require('./routes/register');
 const login = require('./routes/login');
+const chat = require('./routes/chat');
 const port = 1337;
+const dsn =  process.env.DBWEBB_DSN || "mongodb://localhost:27017/chat";
 const bodyParser = require("body-parser");
 
 app.use(cors());
@@ -27,6 +29,7 @@ app.use('/', index);
 app.use('/reports', reports);
 app.use('/register', register);
 app.use('/login', login);
+app.use('/chat', chat);
 
 // app.post("/register", (req, res) => {
 //     const body = req.body;
@@ -64,7 +67,11 @@ app.use((err, req, res, next) => {
 });
 
 // Start up server
-const server = app.listen(port, () => console.log(`Me API listening on port ${port}!`));
+// const server = app.listen(port, () => console.log(`Me API listening on port ${port}!`));
+const server = app.listen(port, () => {
+    console.log(`Server is listening on ${port}`);
+    console.log(`DSN is: ${dsn}`);
+});
 
 // const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
