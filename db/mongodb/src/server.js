@@ -5,8 +5,8 @@
 
 // MongoDB
 const mongo = require("mongodb").MongoClient;
-// const dsn =  process.env.DBWEBB_DSN || "mongodb://localhost:27017/chat";
-const dsn =  process.env.DBWEBB_DSN || "mongodb://graudusk.me:27017/chat";
+const dsn =  process.env.DBWEBB_DSN || "mongodb://localhost:27017/chat";
+// const dsn =  process.env.DBWEBB_DSN || "mongodb://graudusk.me:27017/chat";
 
 // Express server
 const port = process.env.DBWEBB_PORT || 1337;
