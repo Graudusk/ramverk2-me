@@ -79,12 +79,12 @@ async function findInCollection(dsn, colName, criteria, projection, limit) {
 
 async function insertIntoCollection(dsn, colName, data) {
     console.log(data);
-    const client  = await mongo.connect(dsn);
+    const client  = await mongo.connect(dsn, { useNewUrlParser: true });
     const db = await client.db();
     const col = await db.collection(colName);
 
     // await col.deleteMany();
-    const res = await col.insertMany(data);
+    const res = await col.insertMany([data]);
 
     await client.close();
 
