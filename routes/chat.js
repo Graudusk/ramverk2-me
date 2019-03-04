@@ -62,3 +62,5 @@ async function findInCollection(dsn, colName, criteria, projection, limit) {
 
     return res;
 }
+
+module.exports = router;
