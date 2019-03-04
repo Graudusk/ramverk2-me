@@ -27,6 +27,19 @@ router.get("/", async (request, response) => {
     }
 });
 
+// Return a JSON object with list of all documents within the collection.
+router.post("/", async (request, response) => {
+    try {
+        let res = await insertIntoCollection(dsn, "chat", request.body);
+
+        console.log(res);
+        response.json(res);
+    } catch (err) {
+        console.log(err);
+        response.json(err);
+    }
+});
+
 
 
 // Startup server and liten on port
@@ -57,6 +70,20 @@ async function findInCollection(dsn, colName, criteria, projection, limit) {
     const db = await client.db();
     const col = await db.collection(colName);
     const res = await col.find(criteria, projection).limit(limit).toArray();
+
+    await client.close();
+
+    return res;
+}
+
+
+async function insertIntoCollection(dsn, colName, data) {
+    const client  = await mongo.connect(dsn);
+    const db = await client.db();
+    const col = await db.collection(colName);
+
+    // await col.deleteMany();
+    const res = await col.insertMany(data);
 
     await client.close();
 
